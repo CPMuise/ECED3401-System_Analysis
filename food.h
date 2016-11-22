@@ -33,7 +33,7 @@ class fooditem{
 		void write_Rpt(ostream &out); // Specialized write method for food report
 }
 
-fooditem(int id, int fType, int orderT, int delivT, int prepStrT, int prepEndT, int relinquishT, int status, int cID){
+fooditem::fooditem(int id, int fType, int orderT, int delivT, int prepStrT, int prepEndT, int relinquishT, int status, int cID){
 	int _id          = id;
 	int _fType       = fType;
 	int _orderT      = orderT;
@@ -45,63 +45,63 @@ fooditem(int id, int fType, int orderT, int delivT, int prepStrT, int prepEndT, 
 	int _cID         = cID;
 }
 
-int id(){
+int fooditem::id(){
 	return _id;
 }
 
-int fType(){
+int fooditem::fType(){
 	return _fType;
 }
 
-int orderT(){
+int fooditem::orderT(){
 	return _orderT;
 }
 
-int delivT(){
+int fooditem::delivT(){
 	return _delivT;
 }
 
-int prepStrT(){
+int fooditem::prepStrT(){
 	return _prepStrT;
 }
 
-int prepEndT(){
+int fooditem::prepEndT(){
 	return _prepStrT;
 }
 
-int relinquishT(){
+int fooditem::relinquishT(){
 	return _relinquishT;
 }
 
-int status(){
+int fooditem::status(){
 	return _status;
 }
 
-void orderT(int orderT){
+void fooditem::orderT(int orderT){
 	_orderT = orderT;
 }
 
-void delivT(int delivT){
+void fooditem::delivT(int delivT){
 	_delivT = delivT;
 }
 
-void prepStrT(int prepStrT){
+void fooditem::prepStrT(int prepStrT){
 	_prepStrT = prepStrT;
 }
 
-void prepEndT(int prepEndT){
+void fooditem::prepEndT(int prepEndT){
 	_prepEndT = prepEndT;
 }
 
-void relinquishT(int relinquishT){
+void fooditem::relinquishT(int relinquishT){
 	_relinquishT = relinquishT;
 }
 
-void status(int status) {
+void fooditem::status(int status) {
 	_status = status;
 }
 
-void write(ostream &out){
+void fooditem::write(ostream &out){
 	out << "Food Item" << endl;
 	out << "\tFood ID:                " << _id                    << endl;
 	out << "\tFood Type:              " << _fType                 << endl;
@@ -114,7 +114,7 @@ void write(ostream &out){
 	out << "\tCustomer ID Bought :    " << _cID                   << endl;
 }
 
-void write_Rpt(ostream &out){
+void fooditem::write_Rpt(ostream &out){
 	out << _id          << " " << _fType    << " " << _orderT   << " "
 	    << _delivT      << " " << _prepStrT << " " << _prepEndT << " "
 	    << _relinquishT << " " << ((_relinquish==2) ? -1 : _relinquishT) << " "
