@@ -6,9 +6,9 @@
 #include <iostream>
 #include <fstream>
 #include "customer.h"
-#include "food.h"
+#include "foodItem.h"
 #include "equipment.h"
-#include "tallysheet.h"
+#include "tallySheet.h"
 #include "supplier.h"
 
 class bakery {
@@ -32,28 +32,28 @@ class bakery {
 		
 		// Operation functions
 		void request(int foodItemType); // process customer request, 
+		void pay(int nCakes, int nCrois); // pay for items
 		void order();
+		
 		void orderKits(int nCakes, int nCrois); // Removes funds, adds items to foodMaster
-		void writeRpt_daily(ostream &out);    // 
-		void writeRpt_customer(ostream &out, const &list<foodItem> _cMaster);
-		void writeRpt_food(ostream &out, const &list<foodItem> _fMaster);
+
 		void writeRpt_daily(ofstream &out);    // daily report
 		void writeRpt_customer(ofstream &out, const &list<fooditem> _customerMaster);
 		void writeRpt_food(ofstream &out, const &list<fooditem> _foodMaster);
-};
+}
 
-bakery::bakery(float cakePrice, float croissantPrice, list<customer>* cMaster, list<foodItem>* fMaster)
+bakery(float cakePrice, float croiPrice, list<customer>* cMaster, list<foodItem>* fMaster)
 {
-	_cakePrice      = cakePrice;
-	_croiPrice = croissantPrice;
-	_cashFlow       = 0.0;
-	_cMaster        = cMaster;
-	_fMaster        = fMaster;
+	_cakePrice = cakePrice;
+	_croiPrice = croiPrice;
+	_cashFlow  = 0.0;
+	_cMaster   = cMaster;
+	_fMaster   = fMaster;
 }
 
 float bakery::cakePrice()  // Getter: Cake Price
 {
-	return _cakePrice;
+	return _cakePrice
 }
 
 float bakery::croiPrice() // Getter: Croissant Price
@@ -61,7 +61,12 @@ float bakery::croiPrice() // Getter: Croissant Price
 	return _croiPrice;
 }
 
-float bakery::cashFlow() // Getter: Cumulative Cash Flow
+void pay(int nCakes, int nCrois)
+{
+	_cashFlow()
+}
+
+float cashFlow() // Getter: Cumulative Cash Flow
 {
 	return _cashFlow;
 }
@@ -73,7 +78,7 @@ void deposit() // Add deposit ammount to cumulative cash flow
 
 void withdraw(float wthAmt); // Subtract deposit ammount from cumulative cash flow
 
-void bakery::writeRpt_daily(ofstream &out)
+void report_daily(ofstream &out)
 {
 	_tally.writeRpt(out);
 }
