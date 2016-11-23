@@ -20,7 +20,7 @@ class customer {
 		int _purchaseT; // minutes since store opening that purchase occurs, -1 if NAN
 		
 	public:
-		customer(int id, int craving, int arrivalTime, int loiterTime, int foodID = -1); // Ctor
+		customer(int id, int craving, int arrivalT, ); // Ctor
 		int id();        // Getter: ID
 		int foodID();    // Getter: food ID
 		int craving();   // Getter: craving
@@ -29,7 +29,7 @@ class customer {
 		int returnT();   // Getter: loiterTime
 		int purchaseT(); // Getter: purchase time
 
-		void returnT(int foodPrepEndT); // Setter: return time based on foodItem PrepEndT
+		void returnT(int foodPrepEndT) // Setter: return time based on foodItem PrepEndT
 		void foodID(int f_id);   // Setter: food ID
 		void purchaseT(int p_t); // Setter: purchase time
 		
@@ -37,14 +37,14 @@ class customer {
 		void writeRpt(ostream &out); // Special write function for customer rpt
 };
 
-customer::customer(int id, int craving, int arrivalTime, int loiterTime, int foodID){
-	_id = id;
-	_foodID = foodID;
-	_craving = craving;
-	_arrivalT = arrivalTime;
-	_loiterT  = loiterTime;
-	_returnT = -1;
-	_purchaseT = -1;
+customer::customer(int id, int craving, int arrivalTime, int loiterTime){
+	int _id           = id;
+	int _foodID       = -1;
+	int _craving      = craving;
+	int _arrivalTime  = arrivalT;
+	int _loiterT      = loiterT;
+	int _returnT      = -1;
+	int _purchaseT    = -1;	
 }
 
 int customer::id(){
@@ -66,9 +66,7 @@ int customer::arrivalT(){
 int customer::loiterT(){
 	return _loiterT;
 }
-int customer::returnT() {
-	return _returnT;
-}
+
 int customer::purchaseT(){
 	return _purchaseT;
 }
@@ -77,7 +75,7 @@ void customer::foodID(int f_id){
 	_foodID = f_id;
 }
 
-void customer::returnT(int foodPrepEndT)
+int customer::returnT(int foodPrepEndT)
 {
 	// only care if it may be done in time, default returnT value already appropriate
 	if((_arrivalT + _loiterT) <= foodPrepEndT){ // Will be done in time
